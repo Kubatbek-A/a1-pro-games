@@ -1,12 +1,11 @@
-import GamesList from "@/components/GamesList/GamesList";
-import { Game } from "@/types/game";
 import { Typography } from "@mui/material";
 
-const API = "https://nextjs-test-pi-hazel-56.vercel.app/data/games.json";
+import { fetchGames } from "@/api/fetchGames";
+import GamesList from "@/components/GamesList/GamesList";
+import { Game } from "@/types/game";
 
 export default async function Games() {
-  const gamesResponse = await fetch(API, { cache: "force-cache" });
-  const games: Game[] = await gamesResponse.json();
+  const games: Game[] = await fetchGames();
 
   return (
     <div>
